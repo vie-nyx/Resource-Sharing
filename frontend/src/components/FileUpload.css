@@ -1,0 +1,181 @@
+/* Dreamy background with soft animated gradient */
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #a6c0fe, #f68084, #f8b6d4);
+    background-size: 400% 400%;
+    animation: gradient 16s ease infinite;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Styling the form container with soft glow */
+  .upload-form {
+    width: 100%;
+    max-width: 450px;
+    padding: 45px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease-in-out, box-shadow 0.4s ease-in-out;
+  }
+  
+  .upload-form:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Title with soft animation */
+  .upload-section h2 {
+    font-size: 32px;
+    color: #8e44ad;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-shadow: 0 0 12px rgba(142, 68, 173, 0.3);
+    animation: float 5s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Styling the file input */
+  .form-group input[type="file"] {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 15px;
+    border: 2px solid rgba(142, 68, 173, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    border: none;
+  }
+  
+  .form-group input[type="file"]:focus {
+    outline: none;
+    border-color: #8e44ad;
+    box-shadow: 0 0 12px rgba(142, 68, 173, 0.2), 0 6px 18px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  /* Select dropdown with soft colors */
+  .form-group select {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 15px;
+    border: 2px solid rgba(142, 68, 173, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  }
+  
+  .form-group select:focus {
+    outline: none;
+    border-color: #8e44ad;
+    box-shadow: 0 0 12px rgba(142, 68, 173, 0.2), 0 6px 18px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  /* Upload button with dreamy gradient */
+  .upload-button {
+    background: linear-gradient(45deg, #8e44ad, #c17bfe);
+    color: white;
+    border: none;
+    padding: 16px 18px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(142, 68, 173, 0.2);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  .upload-button:hover {
+    background: linear-gradient(45deg, #9b59b6, #d087f7);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(142, 68, 173, 0.3);
+  }
+  
+  .upload-button:active {
+    transform: translateY(-1px);
+  }
+  
+  /* Success and error messages with soft colors */
+  .success-message {
+    margin-top: 20px;
+    background-color: #6dd5ed;
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s ease-out;
+  }
+  
+  .error-message {
+    margin-top: 20px;
+    background-color: #ff6f61;
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 480px) {
+    .upload-form {
+      padding: 30px 20px;
+    }
+  
+    .upload-section h2 {
+      font-size: 28px;
+    }
+  
+    .upload-button {
+      font-size: 16px;
+      padding: 12px 14px;
+    }
+  }
+  

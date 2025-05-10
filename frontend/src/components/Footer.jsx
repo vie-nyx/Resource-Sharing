@@ -1,34 +1,60 @@
+import './Footer.css';
+import { FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
-    
-    return (
-        <div style={{padding: "12px 0px", backgroundColor : "rgb(232, 227, 227)", textAlign: 'center', position:'fixed', width: '100%',height : '85px', bottom : '0', left: '0', right: '0', zIndex : '999'}}>
-            
-            <div className="text-center">
-                    <h5>
-                        Made with ❤️ by <a href="https://akshata-ganbote.netlify.app/" style={{textDecoration : "none", color: "red"}}>Akshata Ganbote</a>
-                    </h5>
-            </div> 
-
-            <div className="text-center pt-1">
-                <a href="https://www.linkedin.com/in/akshata-ganbote-7a3847247/" target="_blank" rel="noreferrer">
-                    <i className="bi bi-linkedin mx-2" style={{fontSize : "20px"}}></i>
-                </a>
-                
-                <a href="https://akshata-ganbote.netlify.app/" target="_blank" rel="noreferrer">
-                    <i className="bi bi-globe mx-2" style={{fontSize : "20px"}}></i>
-                </a>
-
-                <a href="https://github.com/AkshataGanbote" target="_blank" rel="noreferrer">
-                    <i className="bi bi-github mx-2" style={{fontSize : "21px"}}></i>
-                </a>
-
-                <a href="mailto:akshataganbote61843@gmail.com" target="_blank" rel="noreferrer">
-                    <i className="bi bi-envelope-fill mx-2" style={{fontSize : "21px"}}></i>
-                </a>
-            </div>
-            {/* <footer style={{backgroundColor: 'crimson', color:'springgreen', textAlign: 'center', position:'fixed', width: '100%',height : '50px', bottom : '0', left: '0', right: '0', zIndex : '999'}}><h1>THIS IS MY FOOTER</h1></footer> */}
+  return (
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-section">
+          <h4 className="footer-heading">StudyShare</h4>
+          <p className="footer-description">
+            Empowering collaborative learning through shared knowledge and resources.
+          </p>
         </div>
-       
-    )
+
+        <div className="footer-section">
+          <h5 className="footer-subheading">Quick Links</h5>
+          <ul className="footer-link-list">
+            <li><a href="/about" className="footer-link">About Us</a></li>
+            <li><a href="/blog" className="footer-link">Blog</a></li>
+            <li><a href="/contact" className="footer-link">Contact</a></li>
+            <li><a href="/faq" className="footer-link">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-section">
+          <h5 className="footer-subheading">Legal</h5>
+          <ul className="footer-link-list">
+            <li><a href="/privacy" className="footer-link">Privacy Policy</a></li>
+            <li><a href="/terms" className="footer-link">Terms of Service</a></li>
+            <li><a href="/cookies" className="footer-link">Cookie Policy</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-section">
+          <h5 className="footer-subheading">Connect With Us</h5>
+          <div className="social-icons">
+            <a href="https://linkedin.com" aria-label="LinkedIn" className="social-icon">
+              <FaLinkedin />
+            </a>
+            <a href="https://twitter.com" aria-label="Twitter" className="social-icon">
+              <FaTwitter />
+            </a>
+            <a href="https://instagram.com" aria-label="Instagram" className="social-icon">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <p className="copyright">
+          © {new Date().getFullYear()} StudyShare. All rights reserved.
+        </p>
+        <p className="footer-disclaimer">
+          Part of the Education Technology Group
+        </p>
+      </div>
+    </footer>
+  );
 }

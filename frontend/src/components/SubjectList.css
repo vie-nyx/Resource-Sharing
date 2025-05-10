@@ -1,0 +1,154 @@
+/* SubjectList.css */
+
+.subject-filter {
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 1440px;
+}
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+.subject-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+}
+
+.subject-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+}
+
+.subject-card:hover {
+    transform: translateY(-8px) rotateX(3deg) rotateY(3deg);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.subject-card:hover::before {
+    animation: cardShine 1.5s;
+}
+
+.subject-card.active {
+    background: rgba(124, 58, 237, 0.1);
+    border: 2px solid #7c3aed;
+    animation: pulseGlow 2s infinite;
+}
+
+.subject-card.active::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    border: 2px solid #7c3aed;
+    animation: activePulse 2s infinite;
+}
+
+.subject-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.subject-card p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #4a5568;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.subject-card:hover h3 {
+    color: #7c3aed;
+}
+
+@keyframes cardShine {
+    0% { left: -50%; }
+    100% { left: 150%; }
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.2); }
+    50% { box-shadow: 0 0 0 15px rgba(124, 58, 237, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+}
+
+@keyframes activePulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.subject-card {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.error-message {
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border: 2px solid #fca5a5;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin: 2rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .subject-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .subject-card {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+    
+    .subject-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .subject-card p {
+        font-size: 0.9rem;
+    }
+}
