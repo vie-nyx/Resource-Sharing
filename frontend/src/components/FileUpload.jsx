@@ -13,6 +13,7 @@ const FileUpload = ({ onUploadSuccess }) => {
     const formData = new FormData();
     formData.append('pdf', file);
     formData.append('subject', subject);
+    formData.append('email', sessionStorage.getItem("studentEmail"));
 
     try {
       const res = await axios.post('http://127.0.0.1:3001/api/pdfs/upload', formData);
@@ -64,11 +65,6 @@ const FileUpload = ({ onUploadSuccess }) => {
         </button>
       </form>
 
-      {/* Success message */}
-      {successMessage && <div className="success-message">{successMessage}</div>}
-
-      {/* Error message */}
-      {errorMessage && <div className="error-message">{errorMessage}</div>}
     </div>
   );
 };

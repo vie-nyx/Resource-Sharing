@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import FileList from './components/FileList';
 import FileUpload from './components/FileUpload';
+import Profile from './components/Profile';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/login" element ={<Login/>} />
           <Route path="/home" element ={<Home/>} />
           <Route path="/pdfs" element ={<FileList pdfs={pdfs}/>}/>
+          <Route path="/profile" element={<Profile/>}/>
           <Route path="/upload" element ={<FileUpload/>} />
         </Routes>
       </BrowserRouter>

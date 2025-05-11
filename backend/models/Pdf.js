@@ -5,6 +5,7 @@ const PdfSchema = new mongoose.Schema({
   originalName: String,
   path: String,
   subject: String,
+  uploadedBy: String,
   uploadDate: {
     type: Date,
     default: Date.now

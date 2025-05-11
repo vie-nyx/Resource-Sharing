@@ -3,12 +3,12 @@ import axios from 'axios';
 import './FileList.css';
 import SubjectList from './SubjectList';
 
-
 const FileList = () => {
   const [pdfs, setPdfs] = useState([]);
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');  // Add state for search query
 
   // Fetch PDFs from backend
   useEffect(() => {
@@ -22,13 +22,20 @@ const FileList = () => {
         setLoading(false);
       }
     };
-    
+
     fetchPdfs();
   }, []);
 
-  // Filter PDFs based on selected subject
-  const filteredPdfs = pdfs.filter(pdf => 
-    !selectedSubject || pdf.subject === selectedSubject
+  // Handle search input change
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  // Filter PDFs based on selected subject and search query
+  const filteredPdfs = pdfs.filter(pdf =>
+    (!selectedSubject || pdf.subject === selectedSubject) &&
+    (pdf.originalName.toLowerCase().includes(searchQuery.toLowerCase()) || 
+     pdf.subject.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   // Subject cards data
@@ -43,7 +50,7 @@ const FileList = () => {
 
   return (
     <div className="file-list-container">
-      {/* Navbar */}
+      <br/><br/>
       <nav className="navbar ">
         <div className="nav-left">
           <button className="nav-button">Upload New PDF</button>
@@ -53,12 +60,14 @@ const FileList = () => {
             type="text"
             className="search-input"
             placeholder="Search PDFs..."
+            value={searchQuery}  // Bind search query state to input
+            onChange={handleSearchChange}  // Handle input changes
           />
         </div>
       </nav>
+      
       {/* Subject Filter Cards */}
       <SubjectList onSelect={setSelectedSubject} selectedSubject={selectedSubject} />
-
 
       {/* Loading State */}
       {loading && (

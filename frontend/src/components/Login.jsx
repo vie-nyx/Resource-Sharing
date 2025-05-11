@@ -18,6 +18,7 @@ const Login = () => {
             console.log(result);
             if(result.data === "Success"){
                 console.log("Login Success");
+                sessionStorage.setItem("studentEmail", email);
                 alert('Login successful!')
                 navigate('/home');
             }

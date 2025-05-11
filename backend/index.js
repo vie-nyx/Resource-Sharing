@@ -3,13 +3,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const FormDataModel = require ('./models/FormData');
 const path = require('path'); 
+
 const pdfRoutes = require('./routes/pdfs');  
 const app = express();
 app.use(express.json());
 
 app.use(cors({
   origin: 'http://localhost:5173',
-  methods: ['GET', 'POST'],
+  methods: ['GET', 'POST', 'DELETE','PUT'],
   credentials: true
 }));
 
@@ -24,6 +25,26 @@ mongoose.connect('mongodb://localhost:27017/pdfManager', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
+  app.get('/user/:email', (req, res) => {
+    const { email } = req.params;
+  
+    FormDataModel.findOne({ email: email })
+      .then(user => {
+        if (user) {
+          console.log(user);
+          const { name, email } = user; 
+          console.log(name, email); // Exclude sensitive data like password
+          res.json({ name, email });
+        } else {
+          res.status(404).json({ error: 'User not found' });
+        }
+      })
+      .catch(err => {
+        console.error('Error fetching user:', err);
+        res.status(500).json({ error: 'Internal server error' });
+      });
+  });
+  
 app.post('/register', (req, res)=>{
     // To post / insert data into database
 
@@ -34,6 +55,7 @@ app.post('/register', (req, res)=>{
             res.json("Already registered")
         }
         else{
+          const { fullName, email, password } = req.body;
             FormDataModel.create(req.body)
             .then(log_reg_form => res.json(log_reg_form))
             .catch(err => res.json(err))
